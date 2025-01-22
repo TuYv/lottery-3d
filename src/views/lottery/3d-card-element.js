@@ -30,10 +30,10 @@ const create3DCard = function(_objects = objects) {
     symbol.textContent = currentCardData.name;
     element.appendChild( symbol );
 
-    const details = document.createElement( 'div' );
-    details.className = 'details';
-    details.innerHTML = currentCardData.id;
-    element.appendChild( details );
+    // const details = document.createElement( 'div' );
+    // details.className = 'details';
+    // details.innerHTML = currentCardData.id;
+    // element.appendChild( details );
 
     const objectCSS = new CSS3DObject( element );
     objectCSS.position.x = Math.random() * 4000 - 2000;
