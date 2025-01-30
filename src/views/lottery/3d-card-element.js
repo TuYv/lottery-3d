@@ -1,13 +1,12 @@
 import lotteryConfig from './lottery-config.js';
-const { cardList, colCount, rowCount } = lotteryConfig;
 import { scene, objects } from './3d-core.js';
 
 const THREE = window.THREE;
-
 const { CSS3DObject } = THREE;
+
 const create3DCard = function(_objects = objects) {
-  // 中奖的卡片要染色
-  const cardListWinAll = lotteryConfig.cardListWinAll;
+  // 获取最新的数据
+  const { cardList, cardListWinAll } = lotteryConfig;
   const cardListWinAllIds = cardListWinAll.map(_ => _.id);
 
   for (let i = 0; i < cardList.length; i++) {

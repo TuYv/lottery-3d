@@ -1,13 +1,13 @@
 import lotteryConfig from './lottery-config.js';
-const { cardList, colCount, rowCount } = lotteryConfig;
-import {
-  objects, targets, cardSize, // 3d 变量
-} from './3d-core.js'
+import { objects, targets, cardSize } from './3d-core.js';
 
 const THREE = window.THREE;
-
 const defaultObj = {targets, objects, cardSize};
+
 const targetsCoord = function ({targets, objects, cardSize} = defaultObj) {
+  // 获取最新的数据
+  const { cardList, colCount, rowCount } = lotteryConfig;
+
   // table 平铺节点
   for ( let i = 0, l = objects.length; i < l; i ++ ) {
     const currentCardData = cardList[i];

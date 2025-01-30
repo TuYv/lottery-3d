@@ -10,13 +10,20 @@ module.exports = {
     },
     chainWebpack: config => {
         config.plugin('html').tap(args => {
-            args[0].title = '【GitHub】2077年终大抽奖';
+            args[0].title = '【产研】2025年度晚会';
             return args;
         });
     },
     devServer: {
         port: 8080,
         host: '',
-        disableHostCheck: true
-    }
+        disableHostCheck: true,
+        proxy: {
+            '/callback': {
+                target: 'https://open.feishu.cn/anycross/trigger/callback',
+                changeOrigin: true,
+                pathRewrite: { '^/callback': '' }
+            }
+        }
+    },
 };

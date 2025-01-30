@@ -48,6 +48,8 @@ import lotteryConfig from './lottery-config.js';
 import { cardFlyAnimation, rotateBall, rotateBallStop } from './3d-action.js';
 import { getRandomCard } from './lottery-algorithm.js';
 import STATUS from './3d-status.js';
+import { getCardList } from './lottery-config-users.js';
+import { fetchLotteryResult } from '@/services/lotteryService';
 
 @Component({
   components: {}
@@ -86,10 +88,21 @@ export default class Prize extends Vue {
       return void 0;
     }
 
+    // 获取预设的抽奖结果
+    const lotteryResult = await fetchLotteryResult(      
+      currentPrize.everyTimeGet,  // 每次抽取的人数
+      currentPrize.name           // 奖品名称
+    );
+    if (!lotteryResult) {
+      alert('获取抽奖结果失败，请重试');
+      STATUS.setStatusWait();
+      return void 0;
+    }
+
     // 先回到table状态再抽奖
     STATUS.setStatusRun();
-    transformStatus !== 'table' && await transform( 'table', 500 );
-    await transform( 'sphere', 300 );
+    transformStatus !== 'table' && await transform('table', 500);
+    await transform('sphere', 300);
     rotateBall();
   }
   async lotteryStop() {

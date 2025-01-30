@@ -17,7 +17,7 @@ export { transform, transformStatus, animate };
 import { create3DCard } from './3d-card-element.js';
 import { targetsCoord } from './3d-card-coord.js';
 import { initEvent } from './3d-bind-event.js';
-import { startUserDataSync } from '../../services/userService.js';
+import { startUserDataSync, fetchUsers } from '../../services/userService.js';
 export { rotateBall, rotateBallStop } from './3d-action.js';
 
 // 3D效果类型数组
@@ -51,7 +51,41 @@ function init() {
   }, 100)
   console.log('startUserDataSync');
   // 启动用户数据同步 (每5分钟更新一次)
+  fetchUsers()
   startUserDataSync();
 }
+// 重新初始化3D卡片
+function reinit() {
+  console.log('开始重新初始化3D卡片');
+  console.log('当前场景子元素数量:', scene.children.length);
+  
+  // 清空现有的3D对象
+  while(scene.children.length > 0){ 
+    scene.remove(scene.children[0]); 
+  }
+  objects.length = 0;
+  targets.table.length = 0;
+  targets.sphere.length = 0;
+  targets.helix.length = 0;
+  targets.grid.length = 0;
 
-export { init };
+  console.log('清空后场景子元素数量:', scene.children.length);
+  
+  // 重新创建卡片和计算坐标
+  create3DCard();
+  console.log('创建卡片后对象数量:', objects.length);
+  
+  targetsCoord();
+  console.log('计算坐标后targets数量:', {
+    table: targets.table.length,
+    sphere: targets.sphere.length,
+    helix: targets.helix.length,
+    grid: targets.grid.length
+  });
+  
+  // 重新渲染当前视图
+  const currentTarget = transformStatus ? targets[transformStatus] : targets.table;
+  transform(currentTarget, 1000);
+}
+
+export { init, reinit };
