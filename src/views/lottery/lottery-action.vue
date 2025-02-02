@@ -11,7 +11,7 @@
         <button id="lotteryStart" @click="lotteryStart">开始抽奖</button>
         <button id="lotteryStop" @click="lotteryStop">停！</button>
         <button id="tableShow" @click="tableShow">展示全部</button>
-        <button id="winShow" @click="showAllWinUserPanel = true">展示中奖</button>
+        <!-- <button id="winShow" @click="showAllWinUserPanel = true">展示中奖</button> -->
       </div>
       <div>
         <button id="reset" @click="resetData">重置所有数据</button>
@@ -77,6 +77,7 @@ export default class Prize extends Vue {
       return void 0;
     }
     const currentPrize = lotteryConfig.getCurrentPrize();
+    console.log('currentPrize :', currentPrize);
     if (!currentPrize) {
       alert('请选择奖项');
       STATUS.setStatusWait();
@@ -107,6 +108,7 @@ export default class Prize extends Vue {
   }
   async lotteryStop() {
     const currentPrize = lotteryConfig.getCurrentPrize();
+    console.log('currentPrize :', currentPrize);
     if (!currentPrize) {
       alert('请选择奖项');
       STATUS.setStatusWait();
@@ -114,6 +116,7 @@ export default class Prize extends Vue {
     }
     rotateBallStop();
     const cardSelect = getRandomCard(currentPrize); // 当前的奖项
+    console.log('cardSelect :', cardSelect);
     const cardSelectIndex = cardSelect.map(_ => _.index);
 
     await setSphereDist(2, 500);

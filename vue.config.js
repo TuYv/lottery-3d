@@ -19,10 +19,10 @@ module.exports = {
         host: '',
         disableHostCheck: true,
         proxy: {
-            '/callback': {
-                target: 'https://open.feishu.cn/anycross/trigger/callback',
+            '/anycross': {
+                target: 'https://open.feishu.cn/anycross',
                 changeOrigin: true,
-                pathRewrite: { '^/callback': '' }
+                pathRewrite: { '^/anycross': '' }
             }
         }
     },

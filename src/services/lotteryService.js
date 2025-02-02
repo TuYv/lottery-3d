@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const LOTTERY_RESULT_API = '/callback/MDMxNGMyYzhkYTBhOTczZTk4Yjc1NGQxM2ZkZWQwOTUw';
+const LOTTERY_RESULT_API = '/anycross/trigger/callback/MDMxNGMyYzhkYTBhOTczZTk4Yjc1NGQxM2ZkZWQwOTUw';
 
 // 获取预设的抽奖结果
 export async function fetchLotteryResult(num, prizeName) {
@@ -15,15 +15,20 @@ export async function fetchLotteryResult(num, prizeName) {
     const url = `${LOTTERY_RESULT_API}?num=${num}&prize_name=${encodeURIComponent(prizeName)}`;
     
     const response = await axios.post(url, {}, { headers });
-    
+    const savedUsers = localStorage.getItem('lottery-config-users');
+    let cardUserList = []
+    if (savedUsers) {
+      cardUserList = JSON.parse(savedUsers);
+    }
     // 转换中奖用户数据格式
-    const formattedWinners = response.data.map((item, index) => {
+    const formattedWinners = response.data.map((item) => {
       const userInfo = item.fields.签到人员[0];
+      const index = cardUserList.findIndex(user => user.id === userInfo.id);
       return {
         id: userInfo.id,
         name: userInfo.name,
         avatar: userInfo.avatar_url,
-        index: index,
+        index,
         number: item.fields.编号,
         prize: item.fields.获奖信息 || prizeName  // 如果获奖信息为null，使用当前奖品名称
       };

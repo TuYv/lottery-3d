@@ -7,8 +7,8 @@ const random = function(min, max) {
 const getRandomCard = function(currentPrize) {
   // 从缓存中获取预设的中奖结果
   const selectCardList = JSON.parse(localStorage.getItem('lottery-result') || '[]');
-  
-  console.log('selectCardList', selectCardList);
+  console.log('selectCardList :', selectCardList);
+
   // 获取到结果后立即删除缓存
   if (selectCardList.length > 0) {
     localStorage.removeItem('lottery-result');

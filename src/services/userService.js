@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // 配置接口地址
 // const API_URL = 'https://open.feishu.cn/anycross/trigger/callback/MDM1NDVmZjYzOGQ4OTA1MDBhNGFmY2ZkZjQ5OGQ2NjYz'; // 需要替换为实际的API地址
-const API_URL = '/callback/MDM1NDVmZjYzOGQ4OTA1MDBhNGFmY2ZkZjQ5OGQ2NjYz';
-const PRIZE_API_URL = '/callback/NDFjMGZmZmExOGJhMGNjMTEzMTQ4ZDJiZWQ5NjU4Mzcw';
+const API_URL = '/anycross/trigger/callback/MDM1NDVmZjYzOGQ4OTA1MDBhNGFmY2ZkZjQ5OGQ2NjYz';
+const PRIZE_API_URL = '/anycross/trigger/callback/NDFjMGZmZmExOGJhMGNjMTEzMTQ4ZDJiZWQ5NjU4Mzcw';
 
 
 // 获取奖品数据
