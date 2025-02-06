@@ -33,7 +33,11 @@ const lotteryConfig = {
 fetchPrizes().then(prizes => {
   if (prizes) {
     lotteryConfig.prizeList = prizes;
-    console.log('prizeList:', lotteryConfig.prizeList);
+    lotteryConfig.prizeList.forEach(item => {
+      if (item.img) {
+        item.img = JSON.parse(item.img);
+      }
+    });
     lotteryConfig.loading = false;
   }
 }).catch(error => {

@@ -4,10 +4,10 @@
       <ul class="prize-list">
         <li class="prize-item"
             v-for="(item, index) in prizeList" :key="item.id"
-            :class="{shine: currentPrize && currentPrize.id === item.id, done: index === donePrizeIndex}"
+            :class="{shine: currentPrize && currentPrize === item.id, done: index === donePrizeIndex}"
             @click="setPrize(item)">
-          <div class="prize-item-left" v-if="false">
-            <img src="http://n1.itc.cn/img8/wb/recom/2016/03/02/145687903767748488.JPEG" alt="">
+          <div class="prize-item__top">
+            <img v-for="img in item.img" :src="img" :key="img" />
           </div>
           <div class="prize-item-right">
             <div class="prize-item-title">{{ item.name }}</div>

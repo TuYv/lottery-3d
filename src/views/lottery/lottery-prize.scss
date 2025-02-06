@@ -6,7 +6,7 @@
   flex-direction: column;
 }
 .prize-list {
-  //height: 100%;
+  width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -15,15 +15,15 @@
 }
 .prize-item {
   padding: 10px;
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
   border-radius: 4px;
-  flex-wrap: nowrap;
+  // flex-wrap: nowrap;
   background-color: rgba(0, 127, 127, 0.37);
   border: 1px solid rgba(127, 255, 255, 0.25);
   color: rgba(127, 255, 255, 0.75);
   width: 80%;
-  height: 80px;
+  // height: 80px;
   box-sizing: border-box;
   transition: transform 1s ease-in;
   cursor: pointer;
@@ -32,28 +32,36 @@
     margin-bottom: 0;
   }
 
-  .prize-item-left {
-    width: 60px;
-    margin-right: 10px;
-
+  &__top {
     img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: block;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      margin-right: 5px;
     }
   }
+
+  // .prize-item-left {
+  //   width: 60px;
+  //   margin-right: 10px;
+
+  //   img {
+  //     width: 60px;
+  //     height: 60px;
+  //     border-radius: 50%;
+  //     display: block;
+  //   }
+  // }
 
   .prize-item-right {
     flex: 1;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 
     .prize-item-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
-      margin-bottom: 15px;
+      width: 100px;
     }
     .prize-item-name {
 
