@@ -9,7 +9,7 @@ const create3DCard = function(_objects = objects) {
   const { cardList } = lotteryConfig;
 
   const currentConfig = localStorage.getItem('___lottery___') ? JSON.parse(localStorage.getItem('___lottery___')) : {};
-  const cardListWinAll = currentConfig.cardListWinAll ? currentConfig.cardListWinAll : lotteryConfig.cardListWinAll
+  const cardListWinAll = currentConfig.cardListWinAll || lotteryConfig.cardListWinAll
 
   const cardListWinAllIds = cardListWinAll.map(_ => _.id);
 
