@@ -6,7 +6,11 @@ const { CSS3DObject } = THREE;
 
 const create3DCard = function(_objects = objects) {
   // 获取最新的数据
-  const { cardList, cardListWinAll } = lotteryConfig;
+  const { cardList } = lotteryConfig;
+
+  const currentConfig = localStorage.getItem('___lottery___') ? JSON.parse(localStorage.getItem('___lottery___')) : {};
+  const cardListWinAll = currentConfig.cardListWinAll ? currentConfig.cardListWinAll : lotteryConfig.cardListWinAll
+
   const cardListWinAllIds = cardListWinAll.map(_ => _.id);
 
   for (let i = 0; i < cardList.length; i++) {
